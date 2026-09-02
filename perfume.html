@@ -1,0 +1,654 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Noir Essence | Luxury Perfumes</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            background: #080808;
+            color: #f5f0e8;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 7%;
+            background: rgba(5,5,5,0.96);
+            border-bottom: 1px solid #3b3020;
+        }
+
+        .logo {
+            font-size: 28px;
+            letter-spacing: 3px;
+            color: #d4af37;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #eee;
+            text-decoration: none;
+            font-size: 15px;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #d4af37;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 88vh;
+            display: flex;
+            align-items: center;
+            padding: 70px 7%;
+            background:
+                linear-gradient(90deg, #080808 30%, rgba(8,8,8,0.72)),
+                url("https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=1600&q=85");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .small-title {
+            color: #d4af37;
+            letter-spacing: 5px;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: 70px;
+            line-height: 1.05;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #d4af37;
+        }
+
+        .hero p {
+            color: #c8c8c8;
+            line-height: 1.8;
+            font-size: 17px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background: #d4af37;
+            color: #090909;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #f1d77a;
+            transform: translateY(-3px);
+        }
+
+        /* GENERAL */
+        section {
+            padding: 90px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: #999;
+        }
+
+        /* PERFUME CARDS */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .card {
+            background: #111;
+            border: 1px solid #292319;
+            overflow: hidden;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: #d4af37;
+            box-shadow: 0 15px 40px rgba(212,175,55,0.12);
+        }
+
+        .card img {
+            width: 100%;
+            height: 330px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card h3 {
+            color: #d4af37;
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .card .type {
+            color: #aaa;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .card p {
+            color: #aaa;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .price {
+            color: white;
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        /* ABOUT */
+        .about {
+            background: #0d0d0d;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border: 1px solid #3b3020;
+        }
+
+        .about-text h2 {
+            font-size: 44px;
+            margin-bottom: 20px;
+        }
+
+        .about-text h2 span {
+            color: #d4af37;
+        }
+
+        .about-text p {
+            color: #aaa;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        /* FEATURES */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 25px;
+            margin-top: 45px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 30px;
+            background: #111;
+            border: 1px solid #252015;
+        }
+
+        .feature .icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            color: #999;
+            line-height: 1.6;
+        }
+
+        /* CONTACT */
+        .contact {
+            text-align: center;
+            background: linear-gradient(#0b0b0b, #050505);
+        }
+
+        .contact p {
+            color: #aaa;
+            margin: 10px 0;
+        }
+
+        .contact-box {
+            max-width: 600px;
+            margin: 30px auto 0;
+            display: grid;
+            gap: 15px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 16px;
+            background: #111;
+            border: 1px solid #3a3020;
+            color: white;
+            outline: none;
+            font-family: inherit;
+        }
+
+        textarea {
+            height: 130px;
+            resize: none;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #d4af37;
+        }
+
+        button {
+            padding: 15px;
+            border: none;
+            background: #d4af37;
+            color: #080808;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #f1d77a;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #050505;
+            border-top: 1px solid #292319;
+            color: #777;
+        }
+
+        footer span {
+            color: #d4af37;
+        }
+
+        /* RESPONSIVE */
+        @media(max-width: 900px) {
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 55px;
+            }
+        }
+
+        @media(max-width: 600px) {
+            nav ul {
+                gap: 12px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+            }
+
+            section {
+                padding: 65px 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">NOIR ESSENCE</div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#perfumes">Perfumes</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hero-content">
+
+        <div class="small-title">LUXURY • ELEGANCE • FRAGRANCE</div>
+
+        <h1>
+            Your Signature<br>
+            <span>Scents.</span>
+        </h1>
+
+        <p>
+            Discover elegant fragrances created for unforgettable moments.
+            Explore our collection of luxurious perfumes and find the scent
+            that feels uniquely yours.
+        </p>
+
+        <a href="#perfumes" class="btn">Explore Collection</a>
+
+    </div>
+</section>
+
+
+<!-- PERFUMES -->
+<section id="perfumes">
+
+    <div class="section-title">
+        <h2>Our Collection</h2>
+        <p>Luxury fragrances for every personality</p>
+    </div>
+
+    <div class="products">
+
+        <!-- CARD 1 -->
+        <div class="card">
+            <img
+            src="https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&fit=crop&w=900&q=85"
+            alt="Luxury perfume bottle">
+
+            <div class="card-content">
+                <h3>Midnight Rose</h3>
+                <div class="type">Floral • Elegant</div>
+
+                <p>
+                    A soft floral fragrance with a sophisticated,
+                    mysterious character.
+                </p>
+
+                <div class="price">Rs. 4,999</div>
+            </div>
+        </div>
+
+
+        <!-- CARD 2 -->
+        <div class="card">
+            <img
+            src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=900&q=85"
+            alt="Perfume bottle">
+
+            <div class="card-content">
+                <h3>Noir Intense</h3>
+                <div class="type">Woody • Deep</div>
+
+                <p>
+                    A rich and warm scent designed for confident
+                    evenings and special occasions.
+                </p>
+
+                <div class="price">Rs. 5,499</div>
+            </div>
+        </div>
+
+
+        <!-- CARD 3 -->
+        <div class="card">
+            <img
+            src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=900&q=85"
+            alt="Elegant perfume bottle">
+
+            <div class="card-content">
+                <h3>Golden Bloom</h3>
+                <div class="type">Fresh • Floral</div>
+
+                <p>
+                    A bright and graceful fragrance with a luxurious
+                    golden character.
+                </p>
+
+                <div class="price">Rs. 4,799</div>
+            </div>
+        </div>
+
+
+        <!-- CARD 4 -->
+        <div class="card">
+            <img
+            src="https://images.unsplash.com/photo-1563170351-be82bc888aa4?auto=format&fit=crop&w=900&q=85"
+            alt="Perfume collection">
+
+            <div class="card-content">
+                <h3>Velvet Oud</h3>
+                <div class="type">Oud • Warm</div>
+
+                <p>
+                    A warm, rich fragrance inspired by classic
+                    oriental perfumery.
+                </p>
+
+                <div class="price">Rs. 5,999</div>
+            </div>
+        </div>
+
+
+        <!-- CARD 5 -->
+        <div class="card">
+            <img
+            src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=900&q=85"
+            alt="Perfume bottle on dark background">
+
+            <div class="card-content">
+                <h3>Black Velvet</h3>
+                <div class="type">Luxury • Unisex</div>
+
+                <p>
+                    A modern and sophisticated fragrance with a
+                    smooth, elegant finish.
+                </p>
+
+                <div class="price">Rs. 6,499</div>
+            </div>
+        </div>
+
+
+        <!-- CARD 6 -->
+        <div class="card">
+            <img
+            src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&w=900&q=85"
+            alt="Luxury fragrance">
+
+            <div class="card-content">
+                <h3>Royal Amber</h3>
+                <div class="type">Amber • Rich</div>
+
+                <p>
+                    A warm amber fragrance with a refined and
+                    timeless personality.
+                </p>
+
+                <div class="price">Rs. 5,799</div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ABOUT -->
+<section class="about" id="about">
+
+    <img
+    src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=1000&q=85"
+    alt="Luxury perfume">
+
+    <div class="about-text">
+
+        <h2>The Art of <span>Fragrance</span></h2>
+
+        <p>
+            At Noir Essence, we believe a perfume is more than just
+            a fragrance. It is a memory, a mood and a part of your
+            personality.
+        </p>
+
+        <p>
+            Our collection is inspired by elegance, confidence and
+            timeless beauty. Every scent is selected to create a
+            memorable experience.
+        </p>
+
+        <a href="#contact" class="btn">Contact Us</a>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+<section>
+
+    <div class="section-title">
+        <h2>Why Choose Us?</h2>
+        <p>Luxury made simple</p>
+    </div>
+
+    <div class="features">
+
+        <div class="feature">
+            <div class="icon">✨</div>
+            <h3>Elegant Scents</h3>
+            <p>
+                Carefully selected fragrances with beautiful
+                and sophisticated profiles.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="icon">🖤</div>
+            <h3>Premium Style</h3>
+            <p>
+                A luxurious experience from the bottle to
+                the final fragrance.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="icon">🎁</div>
+            <h3>Perfect Gifts</h3>
+            <p>
+                Beautiful fragrance choices for birthdays,
+                celebrations and special moments.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+
+    <div class="section-title">
+        <h2>Contact Us</h2>
+        <p>We would love to hear from you</p>
+    </div>
+
+    <p>📧 noiresence@example.com</p>
+    <p>📞 +92 3146282685</p>
+
+    <div class="contact-box">
+
+        <input type="text" placeholder="Your Name">
+
+        <input type="email" placeholder="Your Email">
+
+        <textarea placeholder="Your Message"></textarea>
+
+        <button onclick="sendMessage()">Send Message</button>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+    © 2026 <span>Noir Essence</span> | Luxury Perfumes
+</footer>
+
+
+<script>
+    function sendMessage() {
+        alert("Thank you! Your message has been received. ✨");
+    }
+</script>
+
+</body>
+</html>
+```
+
+</body>
+</html>
